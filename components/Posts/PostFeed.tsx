@@ -1,9 +1,6 @@
 "use client";
 import { useInfiniteQuery } from "@tanstack/react-query";
-
 import { getTweets } from "@/app/lib/TweetsManager";
-import { useCallback, useEffect, useRef } from "react";
-import TweetCard from "../clientComps/TweetCard";
 import InfiniteFeed from "./InfiniteFeed";
 
 const PostFeed = () => {
@@ -26,17 +23,6 @@ const PostFeed = () => {
   });
 
   return (
-    // <div>
-    //   <ul>
-    //     {query.data?.pages.flatMap((page, i) =>
-    //       page.data.map((tweet) => <TweetCard key={tweet.id} {...tweet} />)
-    //     )}
-    //   </ul>
-
-    //   {query.hasNextPage && (
-    //     <button onClick={() => query.fetchNextPage()}>Load more</button>
-    //   )}
-    // </div>
     <InfiniteFeed
       fetchNextPage={query.fetchNextPage}
       hasMore={!!query.hasNextPage}

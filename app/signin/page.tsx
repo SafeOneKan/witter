@@ -1,8 +1,6 @@
 import Register from "@/components/Register";
 import sign from "@/styles/signIn/sign.module.scss";
 import { getServerSession } from "next-auth";
-
-import { FcGoogle } from "react-icons/fc";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 const page = async () => {

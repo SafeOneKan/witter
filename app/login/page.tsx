@@ -7,13 +7,7 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 const Page = async () => {
   const session = await getServerSession(authOptions);
   if (session) redirect("/private");
-  const handleSubmit = (
-    email: string,
-    passwordhashed: string,
-    username?: string
-  ) => {
-    console.log(email, passwordhashed);
-  };
+
   return (
     <div className={sign.cont}>
       <div className={`${sign.title} lg:hidden`}>

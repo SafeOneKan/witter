@@ -1,7 +1,5 @@
-import { signOut, useSession } from "next-auth/react";
 import React from "react";
-import Image from "next/image";
-import { redirect } from "next/navigation";
+
 import main from "@/styles/Main/home.module.scss";
 import NewPost from "../../components/Posts/NewPost";
 

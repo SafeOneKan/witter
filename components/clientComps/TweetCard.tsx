@@ -2,9 +2,8 @@
 import Link from "next/link";
 import { twet } from "../../app/lib/types";
 import { Avatar } from "@mui/material";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import HeartButton from "./HeartButton";
-import { Tweet } from "@prisma/client";
+
 const TweetCard = (prop: twet) => {
   return (
     <li key={prop.id} className="flex flex-col py-11 px-10 border-b gap-2">

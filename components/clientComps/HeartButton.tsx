@@ -4,7 +4,7 @@ import { CustomSession } from "@/app/lib/types";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { redirect } from "next/navigation";
 import { PutLike } from "@/app/lib/TweetsManager";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const HeartButton = ({
   likedByMe,

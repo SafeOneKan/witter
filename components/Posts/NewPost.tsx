@@ -2,9 +2,6 @@
 import home from "@/styles/Main/home.module.scss";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { Avatar } from "@mui/material";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import { Session } from "next-auth";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { insertTweet } from "@/app/lib/TweetsManager";
 import { CustomSession } from "@/app/lib/types";

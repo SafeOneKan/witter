@@ -1,14 +1,10 @@
 import { prisma } from "@/app/lib/Sclient";
 import React from "react";
 
-type param = {
-  params: { id: string };
-};
-
-const page = async ({ params }: param) => {
+const page = async ({ params }: { params: { slug: string } }) => {
   const profil = await prisma.user.findUnique({
     where: {
-      id: params.id,
+      id: params.slug.valueOf(),
     },
   });
   return <div>{profil?.email}</div>;

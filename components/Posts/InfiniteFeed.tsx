@@ -1,10 +1,4 @@
-import { Tweet } from "@prisma/client";
-import { useState } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import Inf from "react-infinite-scroll-component";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Link from "next/link";
-import { Avatar } from "@mui/material";
 import { twet } from "../../app/lib/types";
 import TweetCard from "../clientComps/TweetCard";
 
