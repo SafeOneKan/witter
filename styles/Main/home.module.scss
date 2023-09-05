@@ -1,0 +1,11 @@
+.container {
+  height: fit-content;
+  .NewPost {
+    padding: 20px;
+    border-bottom: 0.5px solid rgb(219, 219, 219);
+
+    .textarea {
+      outline: none;
+    }
+  }
+}

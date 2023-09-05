@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    domains: ["lh3.googleusercontent.com"],
+  },
+  experimental: {
+    serverActions: true,
+    serverComponentsExternalPackages: ["@prisma/client", "bcrypt"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

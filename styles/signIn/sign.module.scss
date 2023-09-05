@@ -1,0 +1,106 @@
+@use "/styles/main.scss" as m;
+.cont {
+  * {
+    transition: all 150ms ease-in-out;
+  }
+  display: flex;
+  background-image: url("/images/wavi.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  .title {
+    width: 20vw;
+    > span {
+      font-size: 45px;
+      font-weight: 700;
+      color: darken(m.$primary-color, 20%);
+    }
+    > h1 {
+      font-size: 40px;
+      font-weight: 200;
+    }
+  }
+  .signs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    border-radius: 10px;
+
+    width: 20vw;
+    height: 60vh;
+
+    box-shadow: 0 0 20px m.$primary-color;
+    > h1 {
+      color: darken(m.$primary-color, 20%);
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+
+      > input {
+        width: 80%;
+        padding: 20px 30px;
+
+        outline: none;
+        font-size: 1.5rem;
+        background: none;
+        border-bottom: 0.1px solid;
+        &:placeholder-shown {
+          opacity: 0.8s;
+          color: rgba(0, 0, 0, 0.177);
+        }
+        &:focus {
+          transform: scale(1.1);
+          border: none;
+        }
+      }
+      > button {
+        font-size: 1.1rem;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: aliceblue;
+        width: 70%;
+        &:hover {
+          color: white;
+          background-color: darken(m.$primary-color, 15%);
+          box-shadow: 0 0 20px m.$primary-color;
+        }
+      }
+    }
+    .or {
+      font-weight: 600;
+    }
+    .google {
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: aliceblue;
+      padding: 20px;
+      border-radius: 5px;
+      width: 70%;
+      &:hover {
+        color: white;
+        background-color: darken(m.$primary-color, 15%);
+        box-shadow: 0 0 20px m.$primary-color;
+      }
+    }
+    .link {
+      color: rgb(97, 97, 255);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+  }
+}
