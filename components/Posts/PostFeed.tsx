@@ -7,8 +7,6 @@ import TweetCard from "../clientComps/TweetCard";
 import InfiniteFeed from "./InfiniteFeed";
 
 const PostFeed = () => {
-  const lastref = useRef<HTMLElement>();
-
   const query = useInfiniteQuery({
     queryKey: ["tweets"],
     queryFn: async ({ pageParam }) => {
@@ -26,21 +24,6 @@ const PostFeed = () => {
       };
     },
   });
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          query.fetchNextPage();
-        }
-      },
-      {
-        threshold: 0.8,
-      }
-    );
-  }, []);
-
-  useEffect(() => {}, [lastref]);
 
   return (
     // <div>

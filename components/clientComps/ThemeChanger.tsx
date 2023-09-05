@@ -15,7 +15,7 @@ const ThemeChanger = () => {
   };
 
   return client ? (
-    <button onClick={handletheme}>{theme === "dark" ? "light" : "dark"}</button>
+    <button onClick={handletheme}>{theme === "dark" ? "Light" : "Dark"}</button>
   ) : (
     <div>loading...</div>
   );

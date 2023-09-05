@@ -82,3 +82,18 @@ export const getTweets = async (
     lastCursor: cursor,
   };
 };
+
+export const PutLike = async (tweetId: string, userId: string) => {
+  try {
+    const d = await prisma.like.create({
+      data: {
+        tweetId: tweetId,
+        userId: userId,
+      },
+    });
+    console.log(d);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};

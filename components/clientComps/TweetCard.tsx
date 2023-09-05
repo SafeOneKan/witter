@@ -4,6 +4,7 @@ import { twet } from "../../app/lib/types";
 import { Avatar } from "@mui/material";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import HeartButton from "./HeartButton";
+import { Tweet } from "@prisma/client";
 const TweetCard = (prop: twet) => {
   return (
     <li key={prop.id} className="flex flex-col py-11 px-10 border-b gap-2">
@@ -21,6 +22,11 @@ const TweetCard = (prop: twet) => {
         </span>
       </div>
       <p className="whitespace-pre-wrap pl-12">{prop.content}</p>
+      <HeartButton
+        likedByMe={prop.likedByUser}
+        likeCount={prop.likeCount}
+        tweetId={prop.id}
+      />
     </li>
   );
 };

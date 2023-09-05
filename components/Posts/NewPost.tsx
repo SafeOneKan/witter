@@ -22,7 +22,6 @@ const resizeArea = (textarea: HTMLTextAreaElement) => {
 const NewPost: React.FC<Props> = ({ session }) => {
   const arearef = useRef<HTMLTextAreaElement>();
   const [areavalue, setareaValue] = useState<string>("");
-  const formRef = useRef<HTMLFormElement>();
   const textarea = useCallback((textarea: HTMLTextAreaElement) => {
     resizeArea(textarea);
 
@@ -35,7 +34,10 @@ const NewPost: React.FC<Props> = ({ session }) => {
 
   const handle = async (data: FormData) => {
     console.log(await insertTweet(data, session?.user?.id!));
-    if (arearef.current) arearef.current.value = "";
+    if (arearef.current) {
+      arearef.current.value = "";
+      arearef.current.style.height = "fit-content";
+    }
   };
 
   return (
@@ -47,7 +49,7 @@ const NewPost: React.FC<Props> = ({ session }) => {
         <Avatar alt="Remy Sharp" src={session?.user?.image || ""} />
         <textarea
           ref={textarea}
-          className={` bg-transparent text-2xl w-full `}
+          className={` bg-transparent text-2xl w-full outline-none resize-none`}
           name="area"
           id="area"
           value={areavalue}

@@ -73,9 +73,11 @@ const Register: React.FC<RegisterProps> = ({ login = false }) => {
   };
 
   return (
-    <div className={sign.signs}>
+    <div
+      className={`${sign.signs} md:w-screen self-center md:h-screen py-10 px-5 dar`}
+    >
       <h1 className="text-3xl font-bold">{login ? "Login" : "Register"}</h1>
-      <form ref={formRef} action={handle} className={sign.form}>
+      <form ref={formRef} action={handle} className={`${sign.form} `}>
         {!login && (
           <>
             <input

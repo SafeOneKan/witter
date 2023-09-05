@@ -6,23 +6,20 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
 
   theme: {
     screens: {
-      "2xl": { max: "1535px" },
-      // => @media (max-width: 1535px) { ... }
+      phone: { min: "0px", max: "767px" },
+      // => @media (min-width: 320px) { ... }
+      tablet: "700px",
+      // => @media (min-width: 640px) { ... }
 
-      xl: { max: "1279px" },
-      // => @media (max-width: 1279px) { ... }
+      laptop: "1024px",
+      // => @media (min-width: 1024px) { ... }
 
-      lg: { max: "1023px" },
-      // => @media (max-width: 1023px) { ... }
-
-      md: { max: "767px" },
-      // => @media (max-width: 767px) { ... }
-
-      sm: { max: "639px" },
-      // => @media (max-width: 639px) { ... }
+      desktop: "1280px",
+      // => @media (min-width: 1280px) { ... }
     },
     extend: {
       backgroundImage: {

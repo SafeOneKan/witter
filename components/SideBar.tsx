@@ -14,9 +14,12 @@ const SideBar = async () => {
   } else {
     return (
       <div
-        className={`border-r-2 flex justify-center  w-[5vw] h-screen sticky top-0  sm:h-fit sm:w-screen z-10 sm:bottom-0 `}
+        className={`tablet:border-r-[0.2px] phone:border-t-[.5px] phone:py-3
+         flex justify-center tablet:h-screen  tablet:sticky phone:fixed tablet:top-0 phone:bottom-0
+           phone:h-fit phone:w-screen tablet:w-fit tablet:px-2 z-10
+             bg-slate-200 dark:bg-slate-800 `}
       >
-        <ul className="flex sm:flex-row flex-col items-center text-2xl gap-4">
+        <ul className="flex phone:flex-row tablet:flex-col items-center text-2xl gap-4">
           <li>
             <Link href="/private">Home</Link>
           </li>

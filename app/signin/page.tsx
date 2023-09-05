@@ -10,7 +10,7 @@ const page = async () => {
   if (session) redirect("/private");
   return (
     <div className={`${sign.cont} `}>
-      <div className={sign.title}>
+      <div className={`${sign.title} lg:hidden`}>
         <span>Embera</span>
         <h1>
           Join our vibrant community and experience a new era of communication

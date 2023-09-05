@@ -35,9 +35,6 @@ const InfiniteFeed = (props: Props) => {
           return <TweetCard {...tweet} key={tweet.id} />;
         })}
       </InfiniteScroll>
-      {props.hasMore && (
-        <button onClick={props.fetchNextPage}>Load more</button>
-      )}
     </>
   );
 };
