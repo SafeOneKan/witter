@@ -1,6 +1,6 @@
 import "./globals.scss";
 import type { Metadata } from "next";
-
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ReactQueryProvider from "@/components/Providers/ReactQueryProvider";
 import SessionProvider from "@/components/Providers/SessionProvider";
 import ThemePro from "@/components/Providers/ThemeProvider";
@@ -20,6 +20,7 @@ export default function RootLayout({
         <body>
           <SessionProvider>
             <ThemePro>{children}</ThemePro>
+            <ReactQueryDevtools />
           </SessionProvider>
         </body>
       </ReactQueryProvider>

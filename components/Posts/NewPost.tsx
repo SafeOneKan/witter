@@ -5,12 +5,15 @@ import { Avatar } from "@mui/material";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { insertTweet } from "@/app/lib/TweetsManager";
 import { CustomSession } from "@/app/lib/types";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 interface Props {
   session: CustomSession | null;
 }
 
 const resizeArea = (textarea: HTMLTextAreaElement) => {
   if (!textarea) return;
+
   textarea.style.height = "0px";
   textarea.style.height = "fit-content";
   textarea.style.height = `${textarea.scrollHeight}px`;
@@ -30,17 +33,26 @@ const NewPost: React.FC<Props> = ({ session }) => {
   }, [areavalue]);
 
   const handle = async (data: FormData) => {
-    console.log(await insertTweet(data, session?.user?.id!));
-    if (arearef.current) {
-      arearef.current.value = "";
+    if (arearef.current?.value) {
+      setareaValue("");
       arearef.current.style.height = "fit-content";
     }
+    await insertTweet(data, session?.user?.id!);
   };
+  const QueryClient = useQueryClient();
+  const muta = useMutation({
+    mutationFn: (data: FormData) => {
+      return handle(data);
+    },
+    onSuccess: () => {
+      QueryClient.invalidateQueries(["tweets"]);
+    },
+  });
 
   return (
     <form
       className={`${home.NewPost} h-2/6 w-full flex flex-col`}
-      action={handle}
+      action={muta.mutate}
     >
       <div className="flex align-center gap-2">
         <Avatar alt="Remy Sharp" src={session?.user?.image || ""} />

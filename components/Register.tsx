@@ -74,9 +74,11 @@ const Register: React.FC<RegisterProps> = ({ login = false }) => {
 
   return (
     <div
-      className={`${sign.signs} md:w-screen self-center md:h-screen py-10 px-5 dar`}
+      className={`${sign.signs} self-center phone:h-screen phone:w-screen phone:dark:bg-slate-700  p-12 flex flex-col justify-center content-center
+       
+       `}
     >
-      <h1 className="text-3xl font-bold">{login ? "Login" : "Register"}</h1>
+      <h1 className="text-3xl  font-bold">{login ? "Login" : "Register"}</h1>
       <form ref={formRef} action={handle} className={`${sign.form} `}>
         {!login && (
           <>
@@ -127,7 +129,10 @@ const Register: React.FC<RegisterProps> = ({ login = false }) => {
       </form>
 
       <div className={sign.or}>or</div>
-      <button onClick={() => signIn("google")} className={sign.google}>
+      <button
+        onClick={() => signIn("google")}
+        className={`${sign.google} dark:text-slate-900`}
+      >
         <FcGoogle size={20} />
         <span>Sign in with Google</span>
       </button>
@@ -154,7 +159,10 @@ const SubmitButton = ({ login }: { login: boolean }) => {
   const data = useFormStatus();
   const isLoading = data.pending;
   return (
-    <button className="disabled:opacity-50" disabled={isLoading}>
+    <button
+      className="disabled:opacity-50 dark:text-slate-900"
+      disabled={isLoading}
+    >
       {isLoading ? "Loading..." : login ? "Sign in" : "Sign Up"}
     </button>
   );

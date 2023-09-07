@@ -5,6 +5,8 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { redirect } from "next/navigation";
 import { PutLike } from "@/app/lib/TweetsManager";
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useCustomMutation } from "../Hooks/useLikeMutation";
 
 const HeartButton = ({
   likedByMe,
@@ -17,11 +19,13 @@ const HeartButton = ({
 }) => {
   const { data: session }: { data: CustomSession | null } = useSession();
 
-  let Heart = likedByMe ? AiFillHeart : AiOutlineHeart;
+  const Heart = likedByMe ? AiFillHeart : AiOutlineHeart;
+
   const styles = "ml-12 w-fit flex justify-center content-center gap-4";
   const [_likeCount, setLikeCount] = useState(likeCount);
   const [_likedByMe, setLikedByMe] = useState(likedByMe);
-  const handleLike = async () => {
+
+  const handleClick = async () => {
     if (!session?.user) {
       return redirect("/auth/signin");
     }
@@ -29,23 +33,28 @@ const HeartButton = ({
     await PutLike(tweetId, session?.user?.id!);
     setLikeCount((pre) => pre + 1);
     setLikedByMe(true);
-
-    return;
   };
+  const d = useCustomMutation("like", handleClick, "tweets");
 
   return (
-    <button onClick={handleLike} className={`${styles} cursor-pointer `}>
-      <div
-        className={`flex content-center self-center ${
-          _likedByMe
-            ? "text-red-500"
-            : "hover:drop-shadow-2xl hover:scale-110 fill-red-700"
-        } `}
+    <div className="flex gap-2">
+      <button
+        disabled={d.isLoading}
+        onClick={() => d.mutate()}
+        className={`${styles} cursor-pointer transition-all duration-200 ease-out disabled:stroke-none`}
       >
-        <Heart />
-      </div>
+        <div
+          className={`flex content-center self-center ${
+            _likedByMe
+              ? "text-red-500"
+              : "hover:drop-shadow-2xl hover:scale-110 fill-red-700"
+          } `}
+        >
+          <Heart />
+        </div>
+      </button>
       <span>{_likeCount}</span>
-    </button>
+    </div>
   );
 };
 
